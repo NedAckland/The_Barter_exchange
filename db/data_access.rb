@@ -1,5 +1,5 @@
 def run_sql(sql, params = [])
-    db = PG.connect(dbname: 'the_barter_exchange')
+    db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'the_barter_exchange'})
     results = db.exec_params(sql, params)
     db.close
     return results
@@ -25,6 +25,7 @@ def find_item_by_id(id)
     results = run_sql("select * from items where id = $1;", [id])
     return results[0]
 end
+
 def find_item_by_user_id(id)
     results = run_sql("select * from items where user_id = $1;", [id])
     return results

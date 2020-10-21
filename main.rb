@@ -1,12 +1,12 @@
 require "sinatra"
-require "sinatra/reloader"
+require "sinatra/reloader" if development?
 require "httparty"
 require 'json'
-require 'pry'
+require 'pry' if development?
 require 'pg'
 require_relative "db/data_access.rb"
 enable :sessions
-also_reload 'db/data_access'
+also_reload 'db/data_access' if development?
 
 
 def logged_in? ()
