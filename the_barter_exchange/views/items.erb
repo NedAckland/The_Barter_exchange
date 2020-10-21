@@ -1,10 +1,6 @@
-<h1>items</h1>
+<h1>add items</h1>
 
-<div>your items = <%= items["item_name"] %></div>
-<img src="<%= items["image_url"]%>" alt="">
-
-
-<form action="/product/add" method="post">
+<form action="/items/add" method="post">
     <label for="">add item</label>
     <input type="text" name="wishlist_item">
     <button>Submit</button>

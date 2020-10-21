@@ -1,12 +1,14 @@
 
 <h1>name: <%= user["name"] %></h1>
 <h1>email: <%= user["email"] %></h1>
+<h1>id: <%= user['id']%></h1>
 <br>
 <div>
-    <%= items['name']%>
+    <%= items['name'] %>
+    <%= items['user_id']  %>
 </div>
 <br>
-<a href="/items/<%= user["id"] %>">add items</a>
+
 <a href="/wishlist">your wishlist</a>
 <a href="/newsfeed">newsfeed</a>
 <br>

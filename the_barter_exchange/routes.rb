@@ -79,12 +79,11 @@ end
 
 
 
-post '/product/add' do
-  redirect "/"
+post '/items/add' do
+  redirect "/profile/1"
 end
 
 get '/items' do
-  
   erb :items
 end
 
@@ -94,13 +93,13 @@ get '/items/:id' do
   erb :items, locals: {items: items}
 end
 
-# redirect to login
-get '/login' do
-  erb :login
-end
 
 # retrieve amd verify user login
-post '/login' do
+post '/profile' do
+  user = find_user_by_email(params['email'])
+  # user['id']
+  items = find_item_by_user_id(20)
+  erb :profile, locals: {user: user, items: items}
 end
 
 

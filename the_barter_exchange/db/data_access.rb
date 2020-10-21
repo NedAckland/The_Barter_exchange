@@ -10,6 +10,12 @@ def find_user_by_name(name)
     return results[0]
 end
 
+def find_user_by_email(email)
+    results = run_sql("select * from users where email = '#{email}';")
+    return results[0]
+end
+
+
 def find_user_by_id(id)
     results = run_sql("select * from users where id = $1;", [id])
     return results[0]
@@ -18,6 +24,10 @@ end
 def find_item_by_id(id)
     results = run_sql("select * from items where id = $1;", [id])
     return results[0]
+end
+def find_item_by_user_id(id)
+    results = run_sql("select * from items where user_id = $1;", [id])
+    return results
 end
 
 def all_items()
