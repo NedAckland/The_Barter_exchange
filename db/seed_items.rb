@@ -30,5 +30,5 @@ Board games Laptop skins"
 items = string.split()
 
 items.size.times do |i|
-    insert_item( items.sample(1), i+1)
+    insert_item( items.sample(1), i+29)
 end

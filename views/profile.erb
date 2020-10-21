@@ -1,16 +1,33 @@
 
-<h1>name: <%= user["name"] %></h1>
-<h1>email: <%= user["email"] %></h1>
-<h1>id: <%= user['id']%></h1>
-<br>
-<div>
-    <%= items['name'] %>
-    <%= items['user_id']  %>
+<header class="profile">
+    <h3>
+        <a href="/newsfeed">newsfeed</a>
+    </h3>
+    <h3>
+        name: <%= user["name"] %>
+    </h3>
+    <h3>
+        email: <%= user["email"] %>
+    </h3>
+</header>
+<div class="profile-wrap">
+    <div>
+        <p> your items :</p>
+    </div>
+    <div>
+        <p>wishlish :</p>
+    </div>
+    <div>
+        <p><%= items['name'] %> </p>
+        
+        <a href="/items/add">add merch</a>
+    </div>
+    <div>
+        <p>item one</p>
+        <p>item two</p>
+        <a href="/wishlist">your wishlist</a>
+    </div>
 </div>
+
 <br>
 
-<a href="/wishlist">your wishlist</a>
-<a href="/newsfeed">newsfeed</a>
-<br>
-<%# <a href="/items/add">add merch</a>
-<a href="/wishlist/add">add items to your wishlist</a> %>
