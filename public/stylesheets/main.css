@@ -14,11 +14,11 @@ body{
 
 }
 header{
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.658);
     padding: 0;
     margin: -8px;
-    padding: 20px;
-    color: orange;
+    /* padding: 20px; */
+    color: rgba(255, 166, 0, 0.479);
 }
 .login-wrapper{
     display: grid;
@@ -27,7 +27,7 @@ header{
     align-items: center;
     justify-content: center;
     background-color: rgb(66, 66, 66);
-    color: beige;
+    color: rgba(245, 245, 220, 0.747);
     /* height: 580px; */
     /* width: 400px; */
     margin: 120px 120px auto auto;
@@ -49,18 +49,18 @@ header{
 }
 input{
     border-radius: 2%;
-    background-color: rgb(194, 194, 194);
+    background-color: rgba(194, 194, 194, 0.555);
     padding: 12px 20px;
     margin: 8px 0;
 }
 button{
     border-radius: 40%;
     padding: 12px 20px;
-    
+    background-color: rgba(194, 194, 194, 0.555);
 }
 .main{
-    background-color: #fff;
-    margin: 0px 200px 0 200px;
+    background-color: rgba(255, 123, 0, 0.322);
+    margin: -9px 200px 0 200px;
     padding: 0 8px 66px 8px;
 }
 /* button:hover{

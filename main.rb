@@ -60,7 +60,7 @@ get '/items/:id' do
   erb :items, locals: {items: items}
 end
 
-
+# ///////////////////////////---NewsFeed---////////////////////////////////
 get '/newsfeed' do
   items = all_items()
   erb :newsfeed, locals: {items: items}
