@@ -26,9 +26,9 @@ def find_item_by_id(id)
     return results[0]
 end
 
-def find_item_by_user_id(id)
+def all_items_by_user_id(id)
     results = run_sql("select * from items where user_id = $1;", [id])
-    return results[0]
+    return results
 end
 
 def all_items()

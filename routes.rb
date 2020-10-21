@@ -29,31 +29,22 @@ get '/' do
 end
 
 
-# user profile page
-# change variables
-post '/profile/:id' do
-  user = find_user_by_id(params['id'])
-  items = find_item_by_id(params['id'])
+post '/login' do
+  user = find_user_by_email(params['email'])
+  session[:user_id] = user['id']
+  redirect '/profile'
+end
+
+get '/profile' do
+
+  user = find_user_by_id(session[:user_id])
+  items = find_item_by_id(session[:user_id])
   erb :profile, locals: {user: user, items: items}
 end
 
-# post '/profile' do
-#   erb :profile
-# end
-
 # //////////////////////////---inventory---/////////////////////////////////
 
-# get all items from users inventory
-get '/inventory' do
-end
-
-# add a new item
-get '/items/new' do
-  redirect "/profile"
-end
-
-
-post '/items/add' do
+post '/items' do
   redirect "/profile"
 end
 
@@ -63,24 +54,12 @@ end
 
 get '/items/:id' do
   items = find_item_by_id(params['id'])
-
   erb :items, locals: {items: items}
 end
 
 
-# retrieve amd verify user login
-post '/profile' do
-  user = find_user_by_email(params['email'])
-  # user['id']
-  items = find_item_by_user_id(user['id'])
-  erb :profile, locals: {user: user, items: items}
-end
-
-
-# newsfeed
 get '/newsfeed' do
   items = all_items()
-  # items[0].to_a.to_s
   erb :newsfeed, locals: {items: items}
 end
 

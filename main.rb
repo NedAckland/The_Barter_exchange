@@ -29,58 +29,26 @@ get '/' do
 end
 
 
-# user profile page
-# change variables
-post '/profile/:id' do
-  user = find_user_by_id(params['id'])
-  items = find_item_by_id(params['id'])
+post '/login' do
+  user = find_user_by_email(params['email'])
+  session[:user_id] = user['id']
+  redirect '/profile'
+end
+
+get '/profile' do
+
+  user = find_user_by_id(session[:user_id])
+  items = all_items_by_user_id(session[:user_id])
   erb :profile, locals: {user: user, items: items}
 end
 
-# post '/profile' do
-#   erb :profile
-# end
-
 # //////////////////////////---inventory---/////////////////////////////////
 
-# get all items from users inventory
-get '/inventory' do
-end
-
-# add a new item
-get '/inventory/new' do
-  redirect "/inventory"
-end
-
-# add items to db
-post '/inventory' do
-end
-
-
-
-# ///////////////////////////////////////////////////////////
-# delete item
-get '/inventory/:id' do
-end
-
-delete '/inventory:id' do
-end
-
-
-# ///////////////////////////////////////////////////////////
-# update item
-patch '/inventory/:id' do
-
-end
-
-
-# ///////////////////////////////////////////////////////////
-
-
-
-
-post '/items/add' do
-  redirect "/profile/1"
+post '/items' do
+  user = find_user_by_id(session[:user_id])
+  user.to_a.to_s
+  run_sql("insert into items (name, user_id) values ('#{params['item']}', '#{session[:user_id]}');")
+  redirect "/profile"
 end
 
 get '/items' do
@@ -89,33 +57,14 @@ end
 
 get '/items/:id' do
   items = find_item_by_id(params['id'])
-
   erb :items, locals: {items: items}
 end
 
 
-# retrieve amd verify user login
-post '/profile' do
-  user = find_user_by_email(params['email'])
-  # user['id']
-  items = find_item_by_user_id(20)
-  erb :profile, locals: {user: user, items: items}
-end
-
-
-# newsfeed
 get '/newsfeed' do
   items = all_items()
   erb :newsfeed, locals: {items: items}
 end
 
 
-
-get '/wishlist' do
-  erb :wishlist
-end
-
-post '/wishlist/add' do
-  redirect "/"
-end
 

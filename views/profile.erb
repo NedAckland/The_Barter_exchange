@@ -4,12 +4,12 @@
         <h3>
             <a href="/newsfeed">newsfeed</a>
         </h3>
-        <h3>
-            <%= user["email"] %>
-        </h3>
-        <h3>
+        <h2>
+            <%= user["name"] %>
+        </h2>
+        <h2>
             profile
-        </h3>
+        </h2>
     </div>
 </header>
 <div class="profile-wrap">
@@ -20,9 +20,11 @@
         <p>wishlish :</p>
     </div>
     <div>
-        <p><%= items['name'] %> </p>
+        <% items.each do |item| %>
+            <p><%= item['name'] %> </p>
+        <% end %>
         
-        <a href="/items/add">add merch</a>
+        <a href="/items">add merch</a>
     </div>
     <div>
         <p>item one</p>
