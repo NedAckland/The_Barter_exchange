@@ -5,22 +5,22 @@ def run_sql(sql, params = [])
     return results
 end
 
-def find_user_by_name(vendor_name)
-    results = run_sql("select * from vendors where vendor_name = '#{vendor_name}';")
+def find_user_by_name(name)
+    results = run_sql("select * from users where name = '#{name}';")
     return results[0]
 end
 
 def find_user_by_id(id)
-    results = run_sql("select * from vendors where id = $1;", [id])
+    results = run_sql("select * from users where id = $1;", [id])
     return results[0]
 end
 
-def find_product_by_id(id)
-    results = run_sql("select * from products where id = $1;", [id])
+def find_item_by_id(id)
+    results = run_sql("select * from items where id = $1;", [id])
     return results[0]
 end
 
-def all_products()
-    run_sql("select * from products;")    
+def all_items()
+    run_sql("select * from items;")    
 end
 

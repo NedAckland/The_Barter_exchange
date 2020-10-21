@@ -7,8 +7,8 @@ def run_sql(sql, params = [])
     return results
 end
   
-def insert_item (item_name, image_url, user_id)
-    sql = "insert into products (item_name, image_url, user_id) values ('#{item_name.join}', '#{image_url}', #{user_id});"
+def insert_item (name, user_id)
+    sql = "insert into items (name, user_id) values ('#{name.join}', #{user_id});"
     run_sql(sql)
     # p sql
 end
@@ -27,8 +27,8 @@ Jigsaw puzzles
 Kitchen and dining room furniture
 Rugs
 Board games Laptop skins"
-wares = string.split()
+items = string.split()
 
-wares.size.times do |i|
-    insert_item( wares.sample(1), "https://loremflickr.com/320/240/?random=#{i+1}", i+1)
+items.size.times do |i|
+    insert_item( items.sample(1), i+1)
 end

@@ -42,14 +42,14 @@ def run_sql(sql, params = [])
     return results
 end
   
-def insert_item (vendor_name, password)
-    sql = "insert into vendors (vendor_name, password) values ('#{vendor_name.join}', '#{password}');"
+def insert_item (name, email, password)
+    sql = "insert into users (name, email, password) values ('#{name}', '#{email}', '#{password}');"
     run_sql(sql)
     # p sql
 end
 
-vendors = string.split()
+users = string.split()
 
-vendors.size.times do |i|
-    insert_item( vendors.sample(1), "#{(i*1023423) * 5 / 100 }")
+users.size.times do |i|
+    insert_item( users[i], "#{users[i]}@gmail.com", "password")
 end

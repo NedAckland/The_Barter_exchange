@@ -28,6 +28,72 @@ get '/' do
   erb :index, :layout => false
 end
 
+
+# user profile page
+# change variables
+post '/profile/:id' do
+  user = find_user_by_id(params['id'])
+  items = find_item_by_id(params['id'])
+  erb :profile, locals: {user: user, items: items}
+end
+
+# post '/profile' do
+#   erb :profile
+# end
+
+# //////////////////////////---inventory---/////////////////////////////////
+
+# get all items from users inventory
+get '/inventory' do
+end
+
+# add a new item
+get '/inventory/new' do
+  redirect "/inventory"
+end
+
+# add items to db
+post '/inventory' do
+end
+
+
+
+# ///////////////////////////////////////////////////////////
+# delete item
+get '/inventory/:id' do
+end
+
+delete '/inventory:id' do
+end
+
+
+# ///////////////////////////////////////////////////////////
+# update item
+patch '/inventory/:id' do
+
+end
+
+
+# ///////////////////////////////////////////////////////////
+
+
+
+
+post '/product/add' do
+  redirect "/"
+end
+
+get '/items' do
+  
+  erb :items
+end
+
+get '/items/:id' do
+  items = find_item_by_id(params['id'])
+
+  erb :items, locals: {items: items}
+end
+
 # redirect to login
 get '/login' do
   erb :login
@@ -37,32 +103,13 @@ end
 post '/login' do
 end
 
-# user profile page
-post '/profile/:id' do
-  trader = find_user_by_id(params['id'])
-  erb :profile, locals: {trader: trader}
-end
-
-# post '/profile' do
-#   erb :profile
-# end
 
 # newsfeed
 get '/newsfeed' do
-  products = all_products()
-  erb :newsfeed, locals: {products: products}
+  items = all_items()
+  erb :newsfeed, locals: {items: items}
 end
 
-get '/items' do
-  
-  erb :items
-end
-
-get '/items/:id' do
-  items = find_product_by_id(params['id'])
-
-  erb :items, locals: {items: items}
-end
 
 
 get '/wishlist' do
@@ -73,6 +120,3 @@ post '/wishlist/add' do
   redirect "/"
 end
 
-post '/product/add' do
-  redirect "/"
-end

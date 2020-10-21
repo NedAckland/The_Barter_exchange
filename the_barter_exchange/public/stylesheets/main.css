@@ -9,6 +9,10 @@ body{
     display: grid;
 
 }
+.main-login{
+    background-image: url("../Images/Untitled-Project\(1\).jpg");
+
+}
 header{
     background-color: rgb(0, 0, 0);
     padding: 0;

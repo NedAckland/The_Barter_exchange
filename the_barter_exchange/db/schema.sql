@@ -1,17 +1,18 @@
 CREATE DATABASE the_barter_exchange;
 
-CREATE TABLE products (
+CREATE TABLE items (
     id SERIAL PRIMARY KEY,
-    item_name TEXT,
-    image_url TEXT,
+    name TEXT,
     user_id INTEGER
 );
 
 
-CREATE TABLE vendors (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    vendor_name TEXT,
+    name TEXT,
+    email TEXT,
     password TEXT
 );
 
-INSERT INTO products (item_name, image_url, user_id) VALUES('', '', 1);
+INSERT INTO items (name, user_id) VALUES('', 1);
+INSERT INTO users (name, email, password) VALUES('','', '');
