@@ -80,6 +80,7 @@ end
 # newsfeed
 get '/newsfeed' do
   items = all_items()
+  # items[0].to_a.to_s
   erb :newsfeed, locals: {items: items}
 end
 

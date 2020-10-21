@@ -28,10 +28,13 @@ end
 
 def find_item_by_user_id(id)
     results = run_sql("select * from items where user_id = $1;", [id])
-    return results
+    return results[0]
 end
 
 def all_items()
     run_sql("select * from items;")    
 end
 
+def all_users()
+    run_sql("select * from items;")    
+end
