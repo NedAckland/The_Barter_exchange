@@ -9,14 +9,14 @@
     </div>
     <div>
         <% items.each do |item| %>
-            <li><a href="/items"><%= item['name'] %> </a></li>
+            <li><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></li>
         <% end %>
         
         <%# <a href="/items">Items Info</a> %>
     </div>
     <div>
         <% wishlist.each do |item| %>
-            <li><a href="/items"><%= item['name'] %> </a></li>
+            <li><a href="/profile"><%= item['name'] %> </a></li>
         <% end %>
         
     </div>

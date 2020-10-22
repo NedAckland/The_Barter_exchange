@@ -77,6 +77,12 @@ get '/items/:id' do
   items = find_item_by_id(params['id'])
   erb :items, locals: {items: items}
 end
+# ////////////////////////////---Item Info---////////////////////////////////////
+
+get '/item_info/:id' do
+  item = find_item_by_id(params['id'])
+  erb :item_info, locals: {item: item}
+end
 
 
 # ///////////////////////////---NewsFeed---////////////////////////////////

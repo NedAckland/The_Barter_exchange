@@ -1,0 +1,10 @@
+item info page 
+    - add contents to db
+    
+profile rating
+
+viewing others profile
+
+trade request
+
+

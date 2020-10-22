@@ -4,5 +4,5 @@
 <br>
 
 <% items.each do |item| %>
-    <div class="newsfeed-items"><%= item['name'] %>  from <%= find_user_by_id(item['user_id'])['email'] %></div>
+    <div class="newsfeed-items"><a href="/item_info/<%= item['id']%>"><%= item['name'] %></a>  from <%= find_user_by_id(item['user_id'])['email'] %></div>
 <% end %>

@@ -5,9 +5,10 @@
 
 body{
     /* background-color: #fff; */
-    background-image: url("../Images/Untitled-Project\(5\).jpg");
+    background-image: url("");
     display: grid;
-    /* background-image: linear-gradient(to top, rgba(0, 0, 0, 0.829), rgba(255, 123, 0, 0.322)); */
+    background-color: rgb(216, 216, 216);
+    /* background-image: linear-gradient(to top, rgba(0, 0, 0, 0.103), rgba(255, 123, 0, 0.322)); */
 
 
 }
@@ -23,7 +24,7 @@ header{
     color: orange;
 }
 .sign-up-wrapper{
-    height: 234px;
+    height: 320px;
     width: min-content;
     display: grid;
     justify-content: flex-end;
@@ -84,8 +85,10 @@ button{
 .main{
     /* background-color: rgb(255, 229, 205); */
     margin: 8px 220px 100px 200px;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.829), rgb(255, 200, 148));
+    /* background-image: linear-gradient(to top, rgba(255, 255, 255, 0.829), rgb(255, 200, 148)); */
     padding: 0 8px 66px 8px;
+ 
+        /* backdrop-filter: blur(5px); */
 }
 a{
     color: orange;
@@ -118,14 +121,18 @@ button:hover{
     padding: 50px;
     margin: 50px;
     /* border: 1px solid rgba(0, 0, 0, 0.281); */
-    /* background-color: rgba(119, 119, 119, 0.212); */
+    background-color: rgba(119, 119, 119, 0.212);
     border: 5px solid rgba(94, 84, 84, 0.062);
     /* border-style: groove; */
+
+    /* backdrop-filter: invert(.7); */
 }
 .newsfeed-items:hover{
     /* height: 20px; */
     
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(255, 123, 0, 0.26));
+    /* backdrop-filter: blur(50px); */
+    /* border-radius: 0 0 0 2%; */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.555), rgba(255, 123, 0, 0.26));
     display: grid;
     gap: 10px;
     /* padding: 50px;
