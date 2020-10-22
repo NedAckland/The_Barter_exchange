@@ -8,12 +8,35 @@
  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"> 
 </head>
 <body>
+<header>
+    <div class="profile">
+        <h3 class="header-links">
 
+            <a href="/newsfeed">newsfeed</a>
+            <a href="/items">Inventory</a>  
+            <a href="/wishlist">wishlist</a>   
+            <a href="/profile">profile</a>
+        </h3>
+        <h2>
+        </h2>
+        <h2>
+              <%= current_user['email'] %>
+            
+        </h2>
+    </div>
+</header>
 <div class="main">
 
   <%= yield %>
 </div>
 
+<% if logged_in? %>
+
+    <form action="/logout" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Logout</button>
+    </form>
+<% end  %>
 
 <footer>
    &copy Copyright The Barter Exchange Inc

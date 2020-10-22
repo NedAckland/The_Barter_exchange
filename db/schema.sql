@@ -9,7 +9,7 @@ CREATE TABLE items (
 CREATE TABLE wishlist (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    user_id INTEGER
+    user_id INTEGER,
 );
 
 

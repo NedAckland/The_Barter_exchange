@@ -1,16 +1,16 @@
-<header>
+<%# <header>
     <div class="profile">
         <h3>
             <a href="/newsfeed">newsfeed</a>   <a href="/items">inventory</a>   <a href="/profile">profile</a>
         </h3>
         <h2>
-            <%= user["name"] %>
+ 
         </h2>
         <h2>
             wishlist
         </h2>
     </div>
-</header>
+</header> %>
 <form action="/wishlist" method="post">
     <label for="">add item</label>
     <input type="text" name="wishlist_item">
@@ -20,14 +20,11 @@
 click on item to delete
 <div>
     <% items.each do |item| %>
-
-    <form action="/wishlist/<%= item["id"] %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    
-
-    <div><button class="delete-button"><%= item['name'] %> </button> </div>
-    <br>
-
+        <form action="/wishlist/<%= item["id"] %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <div><button class="delete-button"><%= item['name'] %> </button> </div>
+            <br>
+        </form>
     <% end %>
     
 </div>

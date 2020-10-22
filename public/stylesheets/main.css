@@ -7,10 +7,12 @@ body{
     /* background-color: #fff; */
     background-image: url("../Images/Untitled-Project\(5\).jpg");
     display: grid;
+    /* background-image: linear-gradient(to top, rgba(0, 0, 0, 0.829), rgba(255, 123, 0, 0.322)); */
+
 
 }
 .main-login{
-    background-image: url("../Images/Untitled-Project\(1\).jpg");
+    background-image: url("../Images/Untitled-Project\(3\).jpg");
 
 }
 header{
@@ -19,6 +21,27 @@ header{
     margin: -8px;
     /* padding: 20px; */
     color: orange;
+}
+.sign-up-wrapper{
+    height: 234px;
+    width: min-content;
+    display: grid;
+    justify-content: flex-end;
+    background-color: #fff;
+    margin-left: 70%;
+    border-radius: 3%;
+    margin-top: 10%;
+    padding: 20px;
+    grid-template-rows: 1fr 1fr;
+    /* color: orange; */
+    /* background-color: rgba(0, 0, 0, 0.945); */
+
+
+}
+.signup-form{
+    display: grid;
+    justify-content: flex-end;
+
 }
 .login-wrapper{
     display: grid;
@@ -54,13 +77,13 @@ input{
     margin: 8px 0;
 }
 button{
-    border-radius: 40%;
+    /* border-radius: 40%; */
     padding: 12px 20px;
     background-color: rgba(194, 194, 194, 0.555);
 }
 .main{
     /* background-color: rgb(255, 229, 205); */
-    margin: -9px 200px 0 200px;
+    margin: 8px 220px 100px 200px;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0.829), rgb(255, 200, 148));
     padding: 0 8px 66px 8px;
 }
@@ -68,12 +91,14 @@ a{
     color: orange;
     
 }
-/* button:hover{
-    background-color: orange;
-}
-input:hover{
-    background-color: orange;
-} */
+button:hover{
+    /* background-color: orange; */
+    background-color: rgb(255, 255, 255);
+
+} 
+/* input:hover{
+    background-color: rgba(255, 166, 0, 0.137);
+} */ 
 .profile-wrap{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -114,4 +139,9 @@ input:hover{
 .delete-button{
     background-color: rgba(255, 255, 255, 0);
     border-radius: 0;
+}
+.header-links{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 210px;
 }

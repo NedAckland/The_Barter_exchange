@@ -4,6 +4,8 @@ require "httparty"
 require 'json'
 require 'pry' if development?
 require 'pg'
+require 'bcrypt'
+
 require_relative "db/data_access.rb"
 enable :sessions
 also_reload 'db/data_access' if development?
@@ -31,8 +33,13 @@ end
 
 post '/login' do
   user = find_user_by_email(params['email'])
-  session[:user_id] = user['id']
-  redirect '/profile'
+  if BCrypt::Password.new(user['password']).== params['password']
+    session[:user_id] = user['id']
+    redirect "/profile"
+  else
+    "not good bro"
+  end
+
 end
 
 get '/profile' do
@@ -86,7 +93,7 @@ end
 
 delete '/logout' do
   session["user_id"] = nil
-  redirect "/login"
+  redirect "/"
 end
 # /////////////////////////////////--wishlist---/////////////////////////////////
 get '/wishlist' do
@@ -105,7 +112,23 @@ end
 
 
 delete '/wishlist/:id' do
+
   id = params["id"]
+  # raise id
   run_sql("DELETE FROM wishlist WHERE id = $1;", [id])
   redirect '/wishlist'
+end
+# //////////////////////////////////---Sign Up---/////////////////////////////
+
+# get '/sign_up' do
+#   erb :sign_up
+# end
+
+# TODO
+post '/signup' do
+  password_digest = BCrypt::Password.create(params["password"])
+  run_sql("INSERT INTO users (name, email, password) VALUES ('#{params["name"]}','#{params["email"]}', '#{password_digest}');")
+  user = find_user_by_email(params['email'])
+  session[:user_id] = user['id']
+  redirect "/profile"
 end
