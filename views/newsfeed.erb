@@ -2,7 +2,7 @@
 <header>
     <div class="profile">
         <h3>
-            <a href="/profile">profile</a>
+            <a href="/profile">profile</a>   <a href="/items">Inventory</a>  <a href="/wishlist">wishlist</a>
         </h3>
         <h3>
         <h2>newsfeed</h2>
@@ -15,6 +15,5 @@
 <div>things that might interst you.</div>
 <br>
 <% items.each do |item| %>
-<div class="newsfeed-items"><%= item['name'] %></div>
-<%# <br> %>
+    <div class="newsfeed-items"><%= item['name'] %>  from <%= find_user_by_id(item['user_id'])['email'] %></div>
 <% end %>

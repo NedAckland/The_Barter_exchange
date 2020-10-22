@@ -36,5 +36,14 @@ def all_items()
 end
 
 def all_users()
-    run_sql("select * from items;")    
+    run_sql("select * from users;")    
+end
+
+def all_users_from_user_id()
+    run_sql("select items.name, users.name from items right join users on users.id = items.user_id;")
+end
+
+def wishlist_items_by_user_id(id)
+    results = run_sql("select * from wishlist where user_id = $1;", [id])
+    return results
 end

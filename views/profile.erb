@@ -2,7 +2,7 @@
 <header>
     <div class="profile">
         <h3>
-            <a href="/newsfeed">newsfeed</a>
+            <a href="/newsfeed">newsfeed</a> <a href="/items">Inventory</a>  <a href="/wishlist">wishlist</a>
         </h3>
         <h2>
             <%= user["name"] %>
@@ -14,22 +14,23 @@
 </header>
 <div class="profile-wrap">
     <div>
-        <p> your items :</p>
+        <p>Inventory :</p>
     </div>
     <div>
-        <p>wishlish :</p>
+        <p>Wishlish :</p>
     </div>
     <div>
         <% items.each do |item| %>
-            <p><%= item['name'] %> </p>
+            <li><a href="/items"><%= item['name'] %> </a></li>
         <% end %>
         
-        <a href="/items">add merch</a>
+        <%# <a href="/items">Items Info</a> %>
     </div>
     <div>
-        <p>item one</p>
-        <p>item two</p>
-        <a href="/wishlist">your wishlist</a>
+        <% wishlist.each do |item| %>
+            <li><a href="/items"><%= item['name'] %> </a></li>
+        <% end %>
+        
     </div>
 </div>
 

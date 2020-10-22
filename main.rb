@@ -39,20 +39,31 @@ get '/profile' do
 
   user = find_user_by_id(session[:user_id])
   items = all_items_by_user_id(session[:user_id])
-  erb :profile, locals: {user: user, items: items}
+  wishlist = wishlist_items_by_user_id(session[:user_id])
+  erb :profile, locals: {user: user, items: items, wishlist: wishlist}
 end
 
 # //////////////////////////---inventory---/////////////////////////////////
 
+
+delete '/items/:id' do
+  id = params["id"]
+  run_sql("DELETE FROM items WHERE id = $1;", [id])
+  redirect '/items'
+end
+
 post '/items' do
   user = find_user_by_id(session[:user_id])
-  user.to_a.to_s
+
   run_sql("insert into items (name, user_id) values ('#{params['item']}', '#{session[:user_id]}');")
-  redirect "/profile"
+  redirect "/items"
 end
 
 get '/items' do
-  erb :items
+  user = find_user_by_id(session[:user_id])
+  items = all_items_by_user_id(session[:user_id])
+  erb :items, locals: {user: user, items: items}
+  # erb :items
 end
 
 get '/items/:id' do
@@ -60,7 +71,10 @@ get '/items/:id' do
   erb :items, locals: {items: items}
 end
 
+
 # ///////////////////////////---NewsFeed---////////////////////////////////
+#  get all users and match the id with items user_id then display in newsfeed
+
 get '/newsfeed' do
   items = all_items()
   erb :newsfeed, locals: {items: items}
@@ -68,3 +82,30 @@ end
 
 
 
+# /////////////////////////////////---logout ---////////////////////////////////
+
+delete '/logout' do
+  session["user_id"] = nil
+  redirect "/login"
+end
+# /////////////////////////////////--wishlist---/////////////////////////////////
+get '/wishlist' do
+  user = find_user_by_id(session[:user_id])
+  items = wishlist_items_by_user_id(session[:user_id])
+  erb :wishlist, locals: {user: user, items: items}
+end
+
+
+post '/wishlist' do
+  user = find_user_by_id(session[:user_id])
+
+  run_sql("insert into wishlist (name, user_id) values ('#{params['wishlist_item']}', '#{session[:user_id]}');")
+  redirect "/wishlist"
+end
+
+
+delete '/wishlist/:id' do
+  id = params["id"]
+  run_sql("DELETE FROM wishlist WHERE id = $1;", [id])
+  redirect '/wishlist'
+end

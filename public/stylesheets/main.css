@@ -14,11 +14,11 @@ body{
 
 }
 header{
-    background-color: rgba(0, 0, 0, 0.658);
+    background-color: rgba(0, 0, 0, 0.945);
     padding: 0;
     margin: -8px;
     /* padding: 20px; */
-    color: rgba(255, 166, 0, 0.479);
+    color: orange;
 }
 .login-wrapper{
     display: grid;
@@ -59,9 +59,14 @@ button{
     background-color: rgba(194, 194, 194, 0.555);
 }
 .main{
-    background-color: rgba(255, 123, 0, 0.322);
+    /* background-color: rgb(255, 229, 205); */
     margin: -9px 200px 0 200px;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.829), rgb(255, 200, 148));
     padding: 0 8px 66px 8px;
+}
+a{
+    color: orange;
+    
 }
 /* button:hover{
     background-color: orange;
@@ -73,7 +78,7 @@ input:hover{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    padding: 0 100px 0 100px
+    padding: 0 50px 0 50px;
 }
 .profile{
     display: grid;
@@ -87,15 +92,26 @@ input:hover{
     gap: 10px;
     padding: 50px;
     margin: 50px;
-    border: 1px solid black;
-    background-color: rgba(119, 119, 119, 0.5);
+    /* border: 1px solid rgba(0, 0, 0, 0.281); */
+    /* background-color: rgba(119, 119, 119, 0.212); */
+    border: 5px solid rgba(94, 84, 84, 0.062);
+    /* border-style: groove; */
 }
 .newsfeed-items:hover{
     /* height: 20px; */
+    
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(255, 123, 0, 0.26));
     display: grid;
     gap: 10px;
-    padding: 50px;
-    margin: 50px;
-    border: 1px solid black;
-    background-color: orange;
+    /* padding: 50px;
+    margin: 50px; */
+    border: none;
+    /* border: 1px solid rgba(255, 255, 255, 0.212); */
+    
+    
+    background-color: rgba(184, 184, 184, 0.192)
+}
+.delete-button{
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 0;
 }
