@@ -8,6 +8,9 @@
         <p>Wishlish :</p>
     </div>
     <div>
+        Rating: 1
+    </div>
+    <div>
         <% items.each do |item| %>
             <li><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></li>
         <% end %>

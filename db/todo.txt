@@ -1,7 +1,11 @@
 item info page 
-    - add contents to db
+    - fix sql injection issue in description
     
+
+
 profile rating
+
+dont allow 2 of the same emails
 
 viewing others profile
 

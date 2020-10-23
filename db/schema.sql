@@ -3,7 +3,8 @@ CREATE DATABASE the_barter_exchange;
 CREATE TABLE items (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    user_id INTEGER
+    user_id INTEGER,
+    description TEXT
 );
 
 CREATE TABLE wishlist (

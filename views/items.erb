@@ -16,13 +16,10 @@
     <input type="text" name="item">
     <button>Submit</button>
 </form>
-    <div>Delete Items</div>
+    <div>Items</div>
 <div>
     <% items.each do |item| %>
-    <form action="/items/<%= item["id"] %>" method="post">
-        <input type="hidden" name="_method" value="delete">    
-        <div><button class="delete-button"><%= item['name'] %> </button> </div>
+        <button class="delete-button"><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></button>
         <br>
-    </form>
     <% end %>
 </div>

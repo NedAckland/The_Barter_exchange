@@ -56,7 +56,7 @@ end
 delete '/items/:id' do
   id = params["id"]
   run_sql("DELETE FROM items WHERE id = $1;", [id])
-  redirect '/items'
+  redirect '/profile'
 end
 
 post '/items' do
@@ -82,6 +82,16 @@ end
 get '/item_info/:id' do
   item = find_item_by_id(params['id'])
   erb :item_info, locals: {item: item}
+end
+
+post '/item_info/:id' do
+  run_sql("update items set description = '#{params['paragraph_text']}' where id = #{params['id']};")
+  redirect "/item_info/#{params['id']}"
+end
+
+post '/item_name/:id' do
+  run_sql("update items set name = '#{params['name']}' where id = #{params['id']};")
+  redirect "/item_info/#{params['id']}"
 end
 
 

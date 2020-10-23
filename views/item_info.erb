@@ -1,6 +1,25 @@
 
 details for: <%= item["name"]  %>
 <br><br><br><br><br>
-item picture: here is a url for a rando picture
+<form action="/item_name/<%= item['id']%>" method="post">
+    <label for=""></label>
+    <input type="text" name="name">
+    <button>Change name</button>
+</form>
+<%# item picture: here is a url for a rando picture %>
 <br><br><br><br><br>
-item information: blah blah blah
+
+item information: 
+<%= item['description'] %>
+<br><br><br><br><br>
+<form action="/item_info/<%= item['id']%>" method="post">
+    <label for=""></label>
+    <textarea name="paragraph_text" cols="50" rows="10"></textarea>
+    <button>Change description</button>
+</form>
+
+<form action="/items/<%= item["id"] %>" method="post">
+    <input type="hidden" name="_method" value="delete">    
+    <div><button class="delete-button">Delete Item</button> </div>
+    <br>
+</form>
