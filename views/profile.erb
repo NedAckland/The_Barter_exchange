@@ -20,10 +20,11 @@
         <%# <a href="/items">Items Info</a> %>
     </div>
     <div>
-        <% wishlist.each do |item| %>
-            <li><a href="/profile"><%= item['name'] %> </a></li>
-        <% end %>
-        
+
+    <% wishlist.each do |item| %>
+        <li><%= item['name'] %></li>
+    <% end %>
+
     </div>
 </div>
 

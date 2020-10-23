@@ -7,7 +7,7 @@
     <% unless item['user_id'] == current_user()['id'] %>
         <div class="newsfeed-items">
         <a class="item-link" href="/item_info/<%= item['id']%>"><%= item['name'] %></a>
-        from <a class="user-link" href="/profile/<%= item['user_id'] %>"> <%= find_user_by_id(item['user_id'])['email'] %></a>
+        from <a class="user-link" href="/profile/<%= item['user_id'] %>"> <%= find_user_by_id(item['user_id'])['name'] %></a>
       </div>
     <% end %>
 <% end %>

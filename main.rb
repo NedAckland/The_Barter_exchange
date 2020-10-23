@@ -157,3 +157,14 @@ post '/signup' do
   session[:user_id] = user['id']
   redirect "/profile"
 end
+# /////////////////////////////////---Trading---///////////////////////////////////////
+
+post '/offer_trade/:id' do
+  item = find_item_by_id(params['id'])
+  
+  "you have offered a trade"
+end
+
+post '/accept_trade' do
+  "you have accepted a trade"
+end

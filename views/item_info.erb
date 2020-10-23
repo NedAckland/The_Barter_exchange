@@ -24,6 +24,7 @@ from:<%= user["name"]  %>
 item information: 
 <%= item['description'] %>
 <br>
+
 <% if current_user()["id"] == user["id"] %>
     <form action="/item_info/<%= item['id']%>" method="post">
         <label for=""></label>
@@ -36,4 +37,12 @@ item information:
         <div><button class="delete-button">Delete Item</button> </div>
         <br>
     </form>
+
+<% else %>
+    <form action="/offer_trade/94<%#= item["id"] %>" method="post">
+        <div><button class="delete-button">offer trade</button> </div>
+        <br>
+    </form>
+    <br>
+
 <% end %>
