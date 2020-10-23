@@ -24,7 +24,9 @@ def current_user()
   find_user_by_id(session[:user_id])
 end
 
-
+def user_by_id(id)
+  find_user_by_id(id)
+end
 # welcome page // ask for login
 get '/' do
   erb :index, :layout => false
@@ -47,14 +49,18 @@ get '/profile' do
   user = find_user_by_id(session[:user_id])
   items = all_items_by_user_id(session[:user_id])
   wishlist = wishlist_items_by_user_id(session[:user_id])
-  erb :profile, locals: {user: user, items: items, wishlist: wishlist}
+  trade_offers = trade_items_by_reciever_id(session[:user_id])
+  # trade_offers.to_a.to_s
+  erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
+
 end
 
 get '/profile/:id' do
   user = find_user_by_id(params["id"])
   items = all_items_by_user_id(params["id"])
   wishlist = wishlist_items_by_user_id(params["id"])
-  erb :profile, locals: {user: user, items: items, wishlist: wishlist}
+  trade_offers = trade_items_by_reciever_id(params["id"])
+  erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
 end
 
 
@@ -161,10 +167,14 @@ end
 
 post '/offer_trade/:id' do
   item = find_item_by_id(params['id'])
-  
+  user = find_user_by_id(item['user_id'])
+  run_sql("INSERT INTO trade_offers (name, item_id, owner_user_id, reciever_user_id) VALUES('#{item['name']}','#{params['id']}','#{user['id']}', #{current_user()['id']});")
   "you have offered a trade"
+  # item.to_a.to_s
+  # redirect '/profile'
 end
 
-post '/accept_trade' do
-  "you have accepted a trade"
+post '/accept_trade/:id/:new_owner' do
+  run_sql("update items set user_id = #{params['new_owner']} where user_id = #{params['id']};")
+  # "you have accepted a trade"
 end

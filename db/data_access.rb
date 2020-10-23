@@ -47,3 +47,9 @@ def wishlist_items_by_user_id(id)
     results = run_sql("select * from wishlist where user_id = $1;", [id])
     return results
 end
+
+def trade_items_by_reciever_id(id)
+    results = run_sql("select * from trade_offers where reciever_user_id = $1;", [id])
+    return results
+end
+

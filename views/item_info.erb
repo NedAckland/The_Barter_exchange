@@ -39,7 +39,7 @@ item information:
     </form>
 
 <% else %>
-    <form action="/offer_trade/94<%#= item["id"] %>" method="post">
+    <form action="/offer_trade/<%= item["id"] %>" method="post">
         <div><button class="delete-button">offer trade</button> </div>
         <br>
     </form>

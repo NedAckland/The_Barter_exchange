@@ -5,10 +5,11 @@ item info page
 
 profile rating
 
-dont allow 2 of the same emails
-
-viewing others profile
+dont allow 2 of the same emails 
 
 trade request
+
+
+add js
 
 

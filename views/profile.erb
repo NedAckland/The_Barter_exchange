@@ -10,21 +10,37 @@
         <p>Wishlist :</p>
     </div>
     <div>
-        Rating: 1
+        Rating:
+    </div>
+    <div>
+        <p>Incoming Trade Offers: </p>
     </div>
     <div>
         <% items.each do |item| %>
             <li><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></li>
         <% end %>
-        
         <%# <a href="/items">Items Info</a> %>
     </div>
     <div>
-
-    <% wishlist.each do |item| %>
-        <li><%= item['name'] %></li>
-    <% end %>
-
+        <% wishlist.each do |item| %>
+            <li><%= item['name'] %></li>
+        <% end %>
+    </div>
+    <div>
+        
+    </div>
+    <div>
+        <%if  trade_offers.count == 0 %>
+            <li>no offers</li>
+        <% else %>
+            <% trade_offers.each do |item| %>
+                <form action="/accept_trade/<%= item["owner_user_id"] %>/<%= item["reciever_user_id"]%>" method="post">
+                    <div><button class="delete-button"><%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %></button> </div>
+                    <br>
+                </form>
+  
+            <% end %>
+        <% end %>
     </div>
 </div>
 
