@@ -50,6 +50,14 @@ get '/profile' do
   erb :profile, locals: {user: user, items: items, wishlist: wishlist}
 end
 
+get '/profile/:id' do
+  user = find_user_by_id(params["id"])
+  items = all_items_by_user_id(params["id"])
+  wishlist = wishlist_items_by_user_id(params["id"])
+  erb :profile, locals: {user: user, items: items, wishlist: wishlist}
+end
+
+
 # //////////////////////////---inventory---/////////////////////////////////
 
 
@@ -81,7 +89,8 @@ end
 
 get '/item_info/:id' do
   item = find_item_by_id(params['id'])
-  erb :item_info, locals: {item: item}
+  user = find_user_by_id(item['user_id'])
+  erb :item_info, locals: {item: item, user: user}
 end
 
 post '/item_info/:id' do
