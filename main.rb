@@ -27,12 +27,13 @@ end
 def user_by_id(id)
   find_user_by_id(id)
 end
+
 # welcome page // ask for login
 get '/' do
   erb :index, :layout => false
 end
 
-
+# send login details to db
 post '/login' do
   user = find_user_by_email(params['email'])
   if BCrypt::Password.new(user['password']).== params['password']
@@ -44,22 +45,23 @@ post '/login' do
 
 end
 
+# go to users profile
 get '/profile' do
-
   user = find_user_by_id(session[:user_id])
   items = all_items_by_user_id(session[:user_id])
   wishlist = wishlist_items_by_user_id(session[:user_id])
-  trade_offers = trade_items_by_reciever_id(session[:user_id])
+  # trade_offers = trade_items_by_reciever_id(session[:user_id])
   # trade_offers.to_a.to_s
   erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
 
 end
 
+# visit others profile
 get '/profile/:id' do
   user = find_user_by_id(params["id"])
   items = all_items_by_user_id(params["id"])
   wishlist = wishlist_items_by_user_id(params["id"])
-  trade_offers = trade_items_by_reciever_id(params["id"])
+  # trade_offers = trade_items_by_reciever_id(params["id"])
   erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
 end
 
@@ -75,8 +77,9 @@ end
 
 post '/items' do
   user = find_user_by_id(session[:user_id])
-
-  run_sql("insert into items (name, user_id) values ('#{params['item']}', '#{session[:user_id]}');")
+  unless params['item'] == ''
+    run_sql("insert into items (name, user_id) values ('#{params['item']}', '#{session[:user_id]}');")
+  end
   redirect "/items"
 end
 
@@ -151,11 +154,7 @@ delete '/wishlist/:id' do
 end
 # //////////////////////////////////---Sign Up---/////////////////////////////
 
-# get '/sign_up' do
-#   erb :sign_up
-# end
 
-# TODO
 post '/signup' do
   password_digest = BCrypt::Password.create(params["password"])
   run_sql("INSERT INTO users (name, email, password) VALUES ('#{params["name"]}','#{params["email"]}', '#{password_digest}');")
@@ -165,16 +164,33 @@ post '/signup' do
 end
 # /////////////////////////////////---Trading---///////////////////////////////////////
 
+# trade page // this is to send offers
+
+
+# to confirm offers
 post '/offer_trade/:id' do
   item = find_item_by_id(params['id'])
   user = find_user_by_id(item['user_id'])
-  run_sql("INSERT INTO trade_offers (name, item_id, owner_user_id, reciever_user_id) VALUES('#{item['name']}','#{params['id']}','#{user['id']}', #{current_user()['id']});")
-  "you have offered a trade"
+  # tem offered with trade
+  "INSERT INTO trade_offers (name, item_id, reciever_id, sender_id, offered_item_id) VALUES('#{item['name']}','#{params['id']}','#{user['id']}', #{current_user()['id']}, 'currently not implemented');"
+
   # item.to_a.to_s
   # redirect '/profile'
 end
 
-post '/accept_trade/:id/:new_owner' do
-  run_sql("update items set user_id = #{params['new_owner']} where user_id = #{params['id']};")
+
+# to accept offers
+# fix sql statement
+post '/accept_trade/:id' do
+  run_sql("delete from trade_offers where item_id = #{params['id']};")
+  
+  # run_sql("update items set user_id = #{params['new_owner']} where user_id = #{params['id']};")
   # "you have accepted a trade"
+  redirect '/profile'
+end
+
+
+
+get '/test' do
+  erb :test
 end

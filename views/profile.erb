@@ -10,7 +10,7 @@
         <p>Wishlist :</p>
     </div>
     <div>
-        Rating:
+        
     </div>
     <div>
         <p>Incoming Trade Offers: </p>
@@ -34,12 +34,18 @@
             <li>no offers</li>
         <% else %>
             <% trade_offers.each do |item| %>
-                <form action="/accept_trade/<%= item["owner_user_id"] %>/<%= item["reciever_user_id"]%>" method="post">
-                    <div><button class="delete-button"><%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %></button> </div>
-                    <br>
-                </form>
-  
+                <% if current_user()["id"] == user["id"] %>
+                    <form action="/accept_trade/<%= item["item_id"] %>" method="post">
+                        <div><button class="delete-button"><%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %></button> </div>
+                        <br>
+                    </form>
+                <% else %>
+                    <div>
+                        <%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %>
+                    </div>
+                <% end %>
             <% end %>
+  
         <% end %>
     </div>
 </div>

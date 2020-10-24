@@ -12,10 +12,12 @@
 
 <header>    
     <form class="login-form" action="/login" method="post">
-        <label class="login-text" for="">email</label>
-        <input type="email" name="email">
-        <label class="login-text" for="">password</label>
-        <input type="password" name="password">
+        <div class="form-group">
+            <label class="login-text" for="exampleInputEmail1">email</label>
+            <input  class="form-control form-control-lg" type="email"  class="form-control" name="email"  placeholder="Enter email">
+            <label class="login-text" for="">password</label>
+            <input type="password" name="password" placeholder="Enter Password">
+        </div>
     <button>Login</button>
     </form>
 </header>
@@ -24,11 +26,11 @@
     <div>Sign Up:</div>
     <form class="signup-form" action="/signup" method="post">
           <label class="signup-text" for=""></label>
-            <input type="text" value="username"name="name">
+            <input type="text" placeholder="username"name="name">
             <label class="signup-text" for=""></label>
-            <input type="email" value="email@email.com"name="email">
+            <input type="email" placeholder="name@example.com"name="email">
             <label class="signup-text" for=""></label>
-            <input type="password" name="password" value="password">
+            <input type="password" placeholder="password" value="password">
             <button>Sign Up</button>
     </form>
 </div>

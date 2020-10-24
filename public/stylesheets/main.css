@@ -73,7 +73,7 @@ header{
 }
 input{
     border-radius: 2%;
-    background-color: rgba(194, 194, 194, 0.555);
+    /* background-color: rgba(194, 194, 194, 0.555); */
     padding: 12px 20px;
     margin: 8px 0;
 }
@@ -108,8 +108,7 @@ button:hover{
 .profile-wrap{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    padding: 0 50px 0 50px;
+
 }
 .profile{
     display: grid;

@@ -26,11 +26,11 @@ CREATE TABLE trade_offers (
     id SERIAL PRIMARY KEY,
     name TEXT,
     item_id INTEGER,
-    owner_user_id INTEGER,
-    reciever_user_id INTEGER
+    reciever_id INTEGER,
+    sender_id INTEGER,
+    offered_item_id INTEGER
 
 );
-
 
 INSERT INTO items (name, user_id) VALUES('', 1);
 INSERT INTO users (name, email, password) VALUES('','', '');

@@ -2,12 +2,18 @@
 <br>
 <div>things that might interst you.</div>
 <br>
- 
-<% items.each do |item| %>
-    <% unless item['user_id'] == current_user()['id'] %>
-        <div class="newsfeed-items">
-        <a class="item-link" href="/item_info/<%= item['id']%>"><%= item['name'] %></a>
-        from <a class="user-link" href="/profile/<%= item['user_id'] %>"> <%= find_user_by_id(item['user_id'])['name'] %></a>
-      </div>
-    <% end %>
+<div class="row">
+  <% items.each do |item| %>
+      <% unless item['user_id'] == current_user()['id'] %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <a class="btn btn-light" href="/item_info/<%= item['id']%>"><%= item['name'] %></a>
+              <p class="card-text"><%= item['description']%></p>
+              <a href="/profile/<%= item['user_id'] %>" class="btn btn-primary">Go to <%= find_user_by_id(item['user_id'])['name'] %>'s Profile</a></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
 <% end %>
+</div>

@@ -7,7 +7,8 @@ profile rating
 
 dont allow 2 of the same emails 
 
-trade request
+trade request -- fix issues
+    -user flow
 
 
 add js
