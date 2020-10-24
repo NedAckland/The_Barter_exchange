@@ -25,11 +25,10 @@ CREATE TABLE users (
 CREATE TABLE trade_offers (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    item_id INTEGER,
-    reciever_id INTEGER,
-    sender_id INTEGER,
-    offered_item_id INTEGER
-
+    requested_item_id INTEGER,
+    offered_item_id INTEGER,
+    offer_receiver_id INTEGER,
+    offer_sender_id INTEGER
 );
 
 INSERT INTO items (name, user_id) VALUES('', 1);

@@ -16,3 +16,26 @@
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
     </div>
   </div>
+
+
+
+      <div>
+        <%if trade_offers.count == 0 %>
+            <li>no offers</li>
+        <% else %>
+            <% trade_offers.each do |item| %>
+                <% if current_user()["id"] == user["id"] %>
+                    <form action="/accept_trade/<%= item["item_id"] %>" method="post">
+                        <div><button class="delete-button"><%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %></button> </div>
+                        <br>
+                    </form>
+                <% else %>
+                    <div>
+                        <%= user_by_id( item['reciever_user_id'])['name']%> wants: <%= item['name'] %>
+                    </div>
+                <% end %>
+            <% end %>
+  
+        <% end %>
+    </div>
+</div>

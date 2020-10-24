@@ -154,3 +154,33 @@ button:hover{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 0 210px;
 }
+
+.trade-menu-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+
+}
+
+.receiver-menu, .sender-menu{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 50px;
+    /* border: 1px solid black; */
+    /* margin: 30px; */
+    padding: 30px;
+}
+.username-header{
+    border-bottom: 1px solid black;
+    
+}
+.trading-page-items-box{
+    border-radius: 2%;
+    border: 1px solid black;
+    height: 90px;
+}

@@ -50,7 +50,7 @@ get '/profile' do
   user = find_user_by_id(session[:user_id])
   items = all_items_by_user_id(session[:user_id])
   wishlist = wishlist_items_by_user_id(session[:user_id])
-  # trade_offers = trade_items_by_reciever_id(session[:user_id])
+  trade_offers = trade_items_by_reciever_id(session[:user_id])
   # trade_offers.to_a.to_s
   erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
 
@@ -61,7 +61,7 @@ get '/profile/:id' do
   user = find_user_by_id(params["id"])
   items = all_items_by_user_id(params["id"])
   wishlist = wishlist_items_by_user_id(params["id"])
-  # trade_offers = trade_items_by_reciever_id(params["id"])
+  trade_offers = trade_items_by_reciever_id(params["id"])
   erb :profile, locals: {user: user, items: items, wishlist: wishlist, trade_offers: trade_offers}
 end
 
@@ -169,22 +169,39 @@ end
 
 # to confirm offers
 post '/offer_trade/:id' do
-  item = find_item_by_id(params['id'])
-  user = find_user_by_id(item['user_id'])
-  # tem offered with trade
-  "INSERT INTO trade_offers (name, item_id, reciever_id, sender_id, offered_item_id) VALUES('#{item['name']}','#{params['id']}','#{user['id']}', #{current_user()['id']}, 'currently not implemented');"
-
+  # item = find_item_by_id(params['id'])
+  # user = find_user_by_id(item['user_id'])
+  # # tem offered with trade
+  "INSERT INTO trade_offers (name, requested_item_id, offered_item_id, offer_receiver_id, offer_sender_id) VALUES( 1, 2, 3, 4, offer);"
   # item.to_a.to_s
   # redirect '/profile'
 end
 
+get '/trading_page/:offer_receiver_id/:offer_sender_id/:item_id' do
+  # "here is return values #{params['offer_receiver_id']} and #{params['offer_sender_id']}"
+  trade_item = find_item_by_id(params['item_id'])
+  offer_receiver = find_user_by_id(params['offer_receiver_id'])
+  offer_sender = find_user_by_id(params['offer_sender_id'])
+  sender_inventory = all_items_by_user_id(session[:user_id])
+  reciever_wishlist = wishlist_items_by_user_id(offer_receiver['id'])
+
+
+  # sender_offer = find_item_by_id(current_trade[0]["offered_item_id"])
+  erb :trading_page, locals: {offer_receiver: offer_receiver ,offer_sender: offer_sender, trade_item: trade_item, sender_inventory: sender_inventory, reciever_wishlist: reciever_wishlist}
+end
+
+post '/offered_item_id/:id/:offer_receiver_id/:requested_item_id' do
+  item = find_item_by_id(params['id'])
+  run_sql("insert into trade_offers (offered_item_id, offer_sender_id, offer_receiver_id, requested_item_id) values (#{params['id']}, #{item['user_id']}, #{params['offer_receiver_id']}, #{params['requested_item_id']});")
+  redirect "/trading_page/#{params['offer_receiver_id']}/#{item['user_id']}/#{params['requested_item_id']}"
+end
 
 # to accept offers
 # fix sql statement
 post '/accept_trade/:id' do
   run_sql("delete from trade_offers where item_id = #{params['id']};")
   
-  # run_sql("update items set user_id = #{params['new_owner']} where user_id = #{params['id']};")
+  # run_sql("update items set user_id = #{params['new_owner']} where item_id = #{params['id']};")
   # "you have accepted a trade"
   redirect '/profile'
 end
