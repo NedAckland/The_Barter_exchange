@@ -3,46 +3,33 @@ item: <%= item["name"]  %>
 <br>
 from:<%= user["name"]  %> 
 <br>
-
 <% if current_user()["id"] == user["id"] %>
-
-    <%# <form action="/items" method="post">
-        <label for=""></label>
-        <input type="text" name="item">
-        <button>Add item</button>
-    </form> %>
-
     <form action="/item_name/<%= item['id']%>" method="post">
         <label for=""></label>
         <input type="text" name="name">
         <button>Change name</button>
     </form>
-<%# item picture: here is a url for a rando picture %>
 <br><br><br><br><br>
 <% end %>
 
 item information: 
 <%= item['description'] %>
 <br>
-
 <% if current_user()["id"] == user["id"] %>
     <form action="/item_info/<%= item['id']%>" method="post">
         <label for=""></label>
         <textarea name="paragraph_text" cols="50" rows="10"></textarea>
         <button>Change description</button>
     </form>
-
     <form action="/items/<%= item["id"] %>" method="post">
         <input type="hidden" name="_method" value="delete">    
         <div><button class="delete-button">Delete Item</button> </div>
         <br>
     </form>
-
 <% else %>
     <form action="/trading_page/<%= user['id']%>/<%= current_user()['id']%>/<%= item['id']%>" method="get">
         <div><button class="delete-button">offer trade</button> </div>
         <br>
     </form>
     <br>
-
 <% end %>

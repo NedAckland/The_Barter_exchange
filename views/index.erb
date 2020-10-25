@@ -9,31 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"> 
 </head>
 <body class="main-login">
-
-<header>    
-    <form class="login-form" action="/login" method="post">
-        <div class="form-group">
-            <label class="login-text" for="exampleInputEmail1">email</label>
-            <input  class="form-control form-control-lg" type="email"  class="form-control" name="email"  placeholder="Enter email">
-            <label class="login-text" for="">password</label>
-            <input type="password" name="password" placeholder="Enter Password">
-        </div>
-    <button>Login</button>
-    </form>
-</header>
-
-<div class="sign-up-wrapper">
-    <div>Sign Up:</div>
-    <form class="signup-form" action="/signup" method="post">
-          <label class="signup-text" for=""></label>
+    <header>    
+        <form class="login-form" action="/login" method="post">
+            <div class="form-group">
+                <label class="login-text" for="exampleInputEmail1">email</label>
+                <input  class="form-control form-control-lg" type="email"  class="form-control" name="email"  placeholder="Enter email">
+                <label class="login-text" for="">password</label>
+                <input type="password" name="password" placeholder="Enter Password">
+            </div>
+        <button>Login</button>
+        </form>
+    </header>
+    <div class="sign-up-wrapper">
+        <div>Sign Up:</div>
+        <form class="signup-form" action="/signup" method="post">
+            <label class="signup-text" for=""></label>
             <input type="text" placeholder="username"name="name">
             <label class="signup-text" for=""></label>
             <input type="email" placeholder="name@example.com"name="email">
             <label class="signup-text" for=""></label>
             <input type="password" placeholder="password" value="password">
             <button>Sign Up</button>
-    </form>
-</div>
-
+        </form>
+    </div>
 </body>
 </html>

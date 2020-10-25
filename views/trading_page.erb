@@ -26,30 +26,19 @@
             <% sender_inventory.each do |item|%>
                 <form action="/offered_item_id/<%= item['id']%>/<%=offer_receiver['id']%>/<%= trade_item['id']%>" method="post">
                     <button class="btn btn-light"><%= item["name"]%></button>
-
-                </form>
-
-                
+                </form> 
             <% end %>
         </div>
         <div>
-            <%# if the db is empty it throws an error %>
-            
-            
-            <li>
-                
+            <li>  
                 <% if trade_offers.to_a.empty? %>
                     choose an item from you inventory
                 <% else %>
-                   <%= find_item_by_id(trade_offers[0]["offered_item_id"])["name"] %>
-                   
+                   <%= find_item_by_id(trade_offers[0]["offered_item_id"])["name"] %> 
                 <% end %>
             </li>
-
         </div>
     </div>
-
-
 </div>
 <form action="/confirm_trade" method="post">
     <button>confirm trade</button>
