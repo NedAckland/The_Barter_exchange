@@ -1,5 +1,8 @@
 # The_Barter_exchange
 
+https://the-barter-exchange.herokuapp.com/
+Link to hosted site: [theBarterExchange]
+
 ### Idea
 Using Ruby and Sinatra to create an online market place where instead of buying and selling items users can trade items. Users will be able to: log in/out, upload items, delete items, update items and read items. 
 > I would like to add extra functionality such as viewing other users profiles, viewing in a newsfeed all items up for trade and hopefully be able to add the trading functionality transfering items between users.
@@ -21,7 +24,7 @@ To start the planning process I used Lucidchart to create some flow diagrams as 
 
 - [x] Include wireframes that you designed during the planning process
 
-- [ ] Have semantically clean HTML and CSS
+- [x] Have semantically clean HTML and CSS
 
 - [x] Be deployed online and accessible to the public
 
@@ -35,3 +38,6 @@ To start the planning process I used Lucidchart to create some flow diagrams as 
 * Postgresql
 
 ### Unsolved Problems
+
+As i spent much of my time on the technical details i was unable to create a clean design for the application.
+there is not yet user confirmation when making trades.
