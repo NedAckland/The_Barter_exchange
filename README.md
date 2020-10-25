@@ -1,7 +1,7 @@
 # The_Barter_exchange
 
-https://the-barter-exchange.herokuapp.com/
-Link to hosted site: [theBarterExchange]
+Link to hosted site: 
+[theBarterExchange](https://the-barter-exchange.herokuapp.com/)
 
 ### Idea
 Using Ruby and Sinatra to create an online market place where instead of buying and selling items users can trade items. Users will be able to: log in/out, upload items, delete items, update items and read items. 
