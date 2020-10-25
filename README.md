@@ -36,6 +36,7 @@ To start the planning process I used Lucidchart to create some flow diagrams as 
 * Sinatra (Web-Framework)
 * BCrypt (Password Encryption)
 * Postgresql
+* Heroku (Hosting)
 
 ### Unsolved Problems
 
