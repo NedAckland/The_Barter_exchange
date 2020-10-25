@@ -5,7 +5,7 @@ click on item to delete
     <% items.each do |item| %>
         <form action="/wishlist/<%= item["id"] %>" method="post">
             <input type="hidden" name="_method" value="delete">
-            <div><button class="delete-button"><%= item['name'] %> </button> </div>
+            <div><button class="btn btn-light"><%= item['name'] %> </button> </div>
             <br>
         </form>
     <% end %>
@@ -16,5 +16,5 @@ click on item to delete
 <form action="/wishlist" method="post">
     <label for="">add item</label>
     <input type="text" name="wishlist_item">
-    <button>Submit</button>
+    <button class="btn btn-light">Submit</button>
 </form>

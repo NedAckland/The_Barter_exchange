@@ -10,7 +10,7 @@ body{
     background-color: rgb(216, 216, 216);
     /* background-image: linear-gradient(to top, rgba(0, 0, 0, 0.103), rgba(255, 123, 0, 0.322)); */
 
-
+    
 }
 .main-login{
     background-image: url("../Images/Untitled-Project\(3\).jpg");
@@ -71,20 +71,11 @@ header{
     padding: 12px 20px;
     margin: 8px 0;
 }
-input{
-    border-radius: 2%;
-    /* background-color: rgba(194, 194, 194, 0.555); */
-    padding: 12px 20px;
-    margin: 8px 0;
-}
-button{
-    /* border-radius: 40%; */
-    padding: 12px 20px;
-    background-color: rgba(194, 194, 194, 0.555);
-}
+
 .main{
     /* background-color: rgb(255, 229, 205); */
-    margin: 8px 220px 100px 200px;
+    /* margin: 8px 220px 100px 200px; */
+
     /* background-image: linear-gradient(to top, rgba(255, 255, 255, 0.829), rgb(255, 200, 148)); */
     padding: 0 8px 66px 8px;
  
@@ -183,4 +174,8 @@ button:hover{
     border-radius: 2%;
     border: 1px solid black;
     height: 90px;
+}
+.main-container{
+    margin: auto;
+    width: 80%;
 }

@@ -3,7 +3,7 @@
     <div class="col-sm-4">Items
     <% items.each do |item| %>
         <div class="col-sm-4">
-            <button class="delete-button"><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></button>
+            <button class="btn btn-light"><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></button>
         </div>
     <% end %>
 </div>
@@ -12,5 +12,5 @@
 <form action="/items" method="post">
     <label for=""></label>
     <input type="text" name="item" placeholder="add item">
-    <button>Submit</button>
+    <button class="btn btn-light">Submit</button>
 </form>

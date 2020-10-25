@@ -1,35 +1,26 @@
+<link rel="stylesheet" href="/stylesheets/profile.css">
 
-<div>
-    <%= user['name'] %>'s  Profile
+
+<div class="profile-header container">
+    <h1><%= user['name'] %></h1>
 </div>
-<div class="profile-wrap">
+
+<div class="container">
     <div>
         <p>Inventory :</p>
-    </div>
-    <div>
-        <p>Wishlist :</p>
-    </div>
-    <div>
-        
-    </div>
-    <div>
-        <p>Incoming Trade Offers: </p>
-    </div>
-    <div>
         <% items.each do |item| %>
             <li><a href="/item_info/<%= item['id']%>"><%= item['name'] %> </a></li>
         <% end %>
         <%# <a href="/items">Items Info</a> %>
     </div>
     <div>
+        <p>Wishlist :</p>
         <% wishlist.each do |item| %>
             <li><%= item['name'] %></li>
         <% end %>
     </div>
     <div>
-        
-    </div>
-    <div>
+        <p>Incoming Trade Offers: </p>
         <%if trade_offers.count == 0 %>
             <li>no offers</li>
         <% else %>

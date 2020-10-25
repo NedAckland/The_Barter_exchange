@@ -2,7 +2,7 @@
 <div class="trade-menu-container">
     <div class="receiver-menu">
         <div class="username-header">
-            offer reciever: <%= offer_receiver["name"]%>
+             <%= offer_receiver["name"]%>
         </div>
         <div class="trading-page-items-box">
             reciever wishlist:
@@ -12,13 +12,15 @@
             </li>
             <% end %>
         </div>
-        <div>
-            <p>up for trade: <%= trade_item['name']%></p>
+        <div> 
+            <li>
+                you want: <%= trade_item['name']%></p>
+            </li>
         </div>
     </div>
     <div class="sender-menu">
         <div class="username-header">
-            offer sender: <%= offer_sender["name"] %> (you)
+            you
         </div>
         <div class="trading-page-items-box">
             <% sender_inventory.each do |item|%>
@@ -34,7 +36,6 @@
             <%# if the db is empty it throws an error %>
             
             
-            sender item you are willing to trade:
             <li>
                 
                 <% if trade_offers.to_a.empty? %>

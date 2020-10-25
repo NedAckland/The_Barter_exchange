@@ -40,7 +40,7 @@ post '/login' do
     session[:user_id] = user['id']
     redirect "/profile"
   else
-    "not good bro"
+    redirect "/"
   end
 
 end
