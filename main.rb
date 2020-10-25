@@ -47,6 +47,9 @@ end
 
 # go to users profile
 get '/profile' do
+  unless logged_in?
+    redirect '/'
+  end
   user = find_user_by_id(session[:user_id])
   items = all_items_by_user_id(session[:user_id])
   wishlist = wishlist_items_by_user_id(session[:user_id])
@@ -58,6 +61,9 @@ end
 
 # visit others profile
 get '/profile/:id' do
+  unless logged_in?
+    redirect '/'
+  end
   user = find_user_by_id(params["id"])
   items = all_items_by_user_id(params["id"])
   wishlist = wishlist_items_by_user_id(params["id"])
@@ -178,24 +184,32 @@ post '/offer_trade/:id' do
 end
 
 get '/trading_page/:offer_receiver_id/:offer_sender_id/:item_id' do
-  # "here is return values #{params['offer_receiver_id']} and #{params['offer_sender_id']}"
   trade_item = find_item_by_id(params['item_id'])
   offer_receiver = find_user_by_id(params['offer_receiver_id'])
   offer_sender = find_user_by_id(params['offer_sender_id'])
   sender_inventory = all_items_by_user_id(session[:user_id])
   reciever_wishlist = wishlist_items_by_user_id(offer_receiver['id'])
+  trade_offers = run_sql("select * from trade_offers ;")
 
+  erb :trading_page, locals: {offer_receiver: offer_receiver ,offer_sender: offer_sender, trade_item: trade_item, sender_inventory: sender_inventory, reciever_wishlist: reciever_wishlist, trade_offers: trade_offers}
 
-  # sender_offer = find_item_by_id(current_trade[0]["offered_item_id"])
-  erb :trading_page, locals: {offer_receiver: offer_receiver ,offer_sender: offer_sender, trade_item: trade_item, sender_inventory: sender_inventory, reciever_wishlist: reciever_wishlist}
 end
 
 post '/offered_item_id/:id/:offer_receiver_id/:requested_item_id' do
   item = find_item_by_id(params['id'])
+
   run_sql("insert into trade_offers (offered_item_id, offer_sender_id, offer_receiver_id, requested_item_id) values (#{params['id']}, #{item['user_id']}, #{params['offer_receiver_id']}, #{params['requested_item_id']});")
   redirect "/trading_page/#{params['offer_receiver_id']}/#{item['user_id']}/#{params['requested_item_id']}"
 end
 
+post "/confirm_trade" do
+  trade_offers = run_sql("select * from trade_offers;")
+  run_sql("update items set user_id = #{trade_offers[0]["offer_sender_id"]} where id = #{trade_offers[0]['requested_item_id']};")
+  run_sql("update items set user_id = #{trade_offers[0]["offer_receiver_id"]} where id = #{trade_offers[0]['offered_item_id']};")
+  run_sql('delete from trade_offers where id < 1000000;')
+
+  redirect '/profile'
+end
 # to accept offers
 # fix sql statement
 post '/accept_trade/:id' do
