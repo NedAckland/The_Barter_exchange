@@ -29,15 +29,16 @@ To start the planning process I used Lucidchart to create some flow diagrams as 
 - [x] Be deployed online and accessible to the public
 
 
-**Technologies Used:**
+### Technologies Used:
 * Ruby 
 * HTML
 * CSS
 * Sinatra (Web-Framework)
-* BCrypt (password encryption)
+* BCrypt (Password Encryption)
 * Postgresql
 
 ### Unsolved Problems
 
-As i spent much of my time on the technical details i was unable to create a clean design for the application.
-there is not yet user confirmation when making trades.
+* As i spent much of my time on the technical details i was unable to create a clean design for the application.
+* there is not yet user confirmation when making trades.
+* I was hoping to add JavaScript to the project to create a better user experiance.
